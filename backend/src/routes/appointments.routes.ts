@@ -1,36 +1,35 @@
 import { Router } from 'express';
-import { startOfHour, parseISO, isEqual } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { AppointmentsRepository } from '../repositories/appointments.repo';
+import { AppoitmentsService } from '../services/appointments.service';
+import { getCustomRepository } from 'typeorm';
 
 const routes = Router();
 
-interface AppointmentRequest {
-  serviceId: string;
-  clientId: string;
-  date: Date;
-}
+routes.get('/', async (_, response) => {
+  const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
-const appointments: Array<AppointmentRequest> = [];
+  const appointments = await appointmentsRepository.find();
 
-routes.post('/', (request, response) => {
+  response.json(appointments);
+});
+
+routes.post('/', async (request, response) => {
   const {
     serviceId,
     clientId,
     selectedDate
   } = request.body;
 
-  const parsedBirthday = startOfHour(parseISO(selectedDate));
+  const parsedDate = parseISO(selectedDate);
 
-  if (appointments.find(a => isEqual(parsedBirthday, a.date))) {
-    return response.status(400).json({ message: 'Date unvaliable' });
-  }
+  const appoitmentsService = new AppoitmentsService();
 
-  const appointment = {
+  const appointment = await appoitmentsService.create({
     serviceId,
     clientId,
-    date: parsedBirthday
-  };
-
-  appointments.push(appointment);
+    selectedDate: parsedDate
+  });
 
   return response.json(appointment);
 });

@@ -1,32 +1,32 @@
 import { Router } from 'express';
-import { uuid } from 'uuidv4';
-import { startOfHour, parseISO } from 'date-fns';
+import { startOfDay, parseISO } from 'date-fns';
+import { ClientsService } from '../services/clients.service';
 
 const routes = Router();
+const clientsService = new ClientsService();
 
-routes.post('/', (request, response) => {
+routes.post('/', async (request, response) => {
   const {
     name,
     sex,
-    worksSeated,
+    works_seated,
     birthday,
     cellphone,
     contact,
-    contactCellphone
+    contact_cellphone
   } = request.body;
 
-  const parsedBirthday = startOfHour(parseISO(birthday));
+  const parsedBirthday = startOfDay(parseISO(birthday));
 
-  const client = {
-    id: uuid(),
+  const client = await clientsService.create({
     name,
     sex,
-    worksSeated,
-    parsedBirthday,
+    works_seated,
+    birthday: parsedBirthday,
     cellphone,
     contact,
-    contactCellphone
-  };
+    contact_cellphone
+  });
 
   return response.json(client);
 });
