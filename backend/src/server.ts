@@ -3,10 +3,11 @@ import 'reflect-metadata';
 import express from 'express';
 import 'express-async-errors';
 
-import routes from './routes';
+import routes from './modules/routes';
 import errorsMiddlewares from './shared/middlewares/errors.middlewares';
 
 import './database';
+import './shared/container';
 
 const app = express();
 

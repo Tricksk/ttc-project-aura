@@ -9,7 +9,7 @@ export class CreateServices1613414954837 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'varchar',
+                        type: 'uuid',
                         isPrimary: true,
                         generationStrategy: 'uuid',
                         default: 'uuid_generate_v4()'
@@ -27,11 +27,13 @@ export class CreateServices1613414954837 implements MigrationInterface {
                     {
                         name: 'use_record',
                         type: 'boolean',
-                        isNullable: false
+                        isNullable: false,
+                        default: false
                     },
                     {
                         name: 'record_id',
-                        type: 'varchar'
+                        type: 'uuid',
+                        isNullable: true
                     }
                 ]
             })
