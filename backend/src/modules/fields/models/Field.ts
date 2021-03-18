@@ -19,6 +19,6 @@ export class Field {
   @Column('boolean')
   required: boolean;
 
-  @OneToMany(() => RecordFields, records => records.record)
+  @OneToMany(() => RecordFields, record_fields => record_fields.field)
   record_fields: RecordFields[]
 }

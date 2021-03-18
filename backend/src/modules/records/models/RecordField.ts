@@ -8,20 +8,20 @@ export class RecordFields {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('uuid')
-  @ManyToOne(() => Record, record => record.record_fields)
+  @Column({ select: false, type: 'uuid' })
   record_id: string;
 
-  @JoinColumn({ name: 'record_id' })
-  record: Record
-
-  @Column('uuid')
-  @ManyToOne(() => Field, field => field.record_fields)
+  @Column({ select: false, type: 'uuid' })
   field_id: string;
-
-  @JoinColumn({ name: 'field_id' })
-  field: Field;
 
   @Column('integer')
   order: number;
+
+  @ManyToOne(() => Record, record => record.record_fields)
+  @JoinColumn({ name: 'record_id' })
+  record: Record;
+
+  @ManyToOne(() => Field, field => field.record_fields, { eager: true })
+  @JoinColumn({ name: 'field_id' })
+  field: Field;
 }

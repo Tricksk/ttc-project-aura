@@ -10,6 +10,10 @@ export class Record {
   @Column('varchar')
   name: string;
 
-  @OneToMany(() => RecordFields, fields => fields.field)
+  @OneToMany(
+    () => RecordFields,
+    record_fields => record_fields.record,
+    { eager: true, cascade: ['insert'] }
+  )
   record_fields: RecordFields[];
 }

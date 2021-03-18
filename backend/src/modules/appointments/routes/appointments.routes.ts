@@ -1,20 +1,20 @@
 import { Router } from 'express';
-import { getCustomRepository } from 'typeorm';
 import { container } from 'tsyringe';
 
 import { parseISO } from 'date-fns';
 
 import { AppoitmentsService } from '../services/appointments.service';
+import { AppointmentsRepository } from '../repositories/AppointmentsRepository';
 
 const routes = Router();
 
-// routes.get('/', async (_, response) => {
-//   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
+routes.get('/today', async (_, response) => {
+  const appoitmentsService = container.resolve(AppoitmentsService);
 
-//   const appointments = await appointmentsRepository.find();
+  const appointments = await appoitmentsService.listAllAppointmentsFromCurrentDay();
 
-//   response.json(appointments);
-// });
+  response.json(appointments);
+});
 
 routes.post('/', async (request, response) => {
   const {

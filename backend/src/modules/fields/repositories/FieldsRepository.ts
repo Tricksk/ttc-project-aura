@@ -12,6 +12,14 @@ export class FieldsRepository implements IFieldsRepository {
     this.ormRepository = getRepository(Field);
   }
 
+  public async listAll(): Promise<Field[]> {
+    return this.ormRepository.find();
+  }
+
+  public async findByIds(ids: string[]): Promise<Field[]> {
+    return this.ormRepository.findByIds(ids);
+  }
+
   public async create(data: ICreateFieldDTO): Promise<Field> {
     return this.ormRepository.create({ ...data });
   }
@@ -19,5 +27,4 @@ export class FieldsRepository implements IFieldsRepository {
   public async save(field: Field): Promise<Field> {
     return this.ormRepository.save(field);
   }
-
 }

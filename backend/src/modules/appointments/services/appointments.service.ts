@@ -4,7 +4,7 @@ import IAppointmentsRepository from "../repositories/interfaces/IAppointmentsRep
 import Appointment from '../models/Appointment';
 
 import AppError from "../../../shared/errors/AppError";
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 interface Request {
   serviceId: string;
@@ -12,6 +12,7 @@ interface Request {
   selectedDate: Date;
 }
 
+@injectable()
 export class AppoitmentsService {
 
   constructor(
@@ -22,8 +23,13 @@ export class AppoitmentsService {
   public async create({ serviceId, clientId, selectedDate }: Request)
     : Promise<Appointment> {
     const appointmentDate = startOfHour(selectedDate);
+    const today = new Date();
+
+    if (appointmentDate.toLocaleDateString() === today.toLocaleDateString())
+      throw new AppError(400, 'Date unvaliable.');
 
     const findAppointment = await this.appointmentsRepository.findByDate(appointmentDate);
+
     if (findAppointment)
       throw new AppError(400, 'Date unvaliable.');
 
@@ -36,5 +42,10 @@ export class AppoitmentsService {
     await this.appointmentsRepository.save(appointment);
 
     return appointment;
+  }
+
+  public async listAllAppointmentsFromCurrentDay(): Promise<Appointment[]> {
+    return await this.appointmentsRepository
+      .findAllAppointmentsFromCurrentDay();
   }
 }

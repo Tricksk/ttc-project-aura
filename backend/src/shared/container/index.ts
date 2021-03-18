@@ -15,9 +15,13 @@ import { RecordsRepository } from '../../modules/records/repositories/RecordsRep
 import IUsersRepository from '../../modules/users/repositories/interfaces/IUsersRepository';
 import { UsersRepository } from '../../modules/users/repositories/UsersRepository';
 
+import IRecordFieldsRepository from '../../modules/records/repositories/interfaces/IRecordFieldsRepository';
+import { RecordFieldsRepository } from '../../modules/records/repositories/RecordFieldsRepository';
+
 container.registerSingleton<IAppointmentsRepository>('AppointmentsRepository', AppointmentsRepository);
 container.registerSingleton<IClientsRepository>('ClientsRepository', ClientsRepository);
 container.registerSingleton<IFieldsRepository>('FieldsRepository', FieldsRepository);
 container.registerSingleton<IRecordsRepository>('RecordsRepository', RecordsRepository);
 container.registerSingleton<IUsersRepository>('UsersRepository', UsersRepository);
+container.registerSingleton<IRecordFieldsRepository>('RecordFieldsRepository', RecordFieldsRepository);
 
