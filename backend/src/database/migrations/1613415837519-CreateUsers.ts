@@ -1,3 +1,4 @@
+import { hash } from 'bcryptjs';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateUsers1613415837519 implements MigrationInterface {
@@ -33,6 +34,8 @@ export class CreateUsers1613415837519 implements MigrationInterface {
             })
         );
 
+        const password = await hash('project-aura2021', 8)
+
         await queryRunner
             .manager
             .createQueryBuilder()
@@ -41,7 +44,7 @@ export class CreateUsers1613415837519 implements MigrationInterface {
             .values({
                 name: 'Admin',
                 login: 'admin',
-                password: 'project-aura2021'
+                password,
             })
             .execute();
     }
