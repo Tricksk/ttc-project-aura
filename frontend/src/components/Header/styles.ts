@@ -68,7 +68,7 @@ export const LogoutButton = styled.button`
   width: 80px;
   height: 80px;
 
-  margin-right: 125px;
+  margin-right: 40px;
 
   display: flex;
   align-items: center;
@@ -83,4 +83,8 @@ export const LogoutButton = styled.button`
   svg {
     opacity: 0.5
   }
+`;
+
+export const HeaderContent = styled.div`
+  margin: 0px 10px;
 `;
