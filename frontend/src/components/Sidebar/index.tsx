@@ -1,16 +1,16 @@
 import React from 'react';
 import { FiBriefcase, FiFileText, FiLayout, FiUser, FiUsers } from 'react-icons/fi';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { Container } from './styles';
 
 const LINKS = [
-  { title: 'Dashboard', to: '/dashboard', component: FiLayout },
-  { title: 'Clientes', to: '/clientes', component: FiUsers },
-  { title: 'Fixas', to: '/fixas', component: FiFileText },
-  { title: 'Serviços', to: '/servicos', component: FiBriefcase },
-  { title: 'Usuários', to: '/usuarios', component: FiUser },
-]
+  { title: 'Dashboard', to: '/admin/dashboard', component: FiLayout },
+  { title: 'Clientes', to: '/admin/clientes', component: FiUsers },
+  { title: 'Fixas', to: '/admin/fixas', component: FiFileText },
+  { title: 'Serviços', to: '/admin/servicos', component: FiBriefcase },
+  { title: 'Usuários', to: '/admin/usuarios', component: FiUser },
+];
 
 const Sidebar: React.FC = () => {
   const { pathname } = useLocation();

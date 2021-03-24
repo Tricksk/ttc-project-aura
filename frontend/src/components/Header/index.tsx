@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const onClick = useCallback(() => {
     logout();
     history.push('/');
-  }, []);
+  }, [logout, history]);
 
   return (
     <Container>

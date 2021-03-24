@@ -2,14 +2,14 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom'
 
 import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
+import Admin from '../pages/Admin/index';
 
 const Routes: React.FC = () => {
 
   return (
     <Switch>
       <Route path="/" exact component={Login} />
-      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/admin" component={Admin} />
     </Switch>
   );
 }

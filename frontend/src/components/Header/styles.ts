@@ -12,6 +12,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
+  position: relative;
+  z-index: 3;
+
   > div:last-child {
     display: flex;
     justify-content: space-between;
@@ -21,7 +24,7 @@ export const Container = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-  width: 512px;
+  width: 490px;
   height: 100%;
 
   display: flex;
@@ -68,8 +71,6 @@ export const LogoutButton = styled.button`
   width: 80px;
   height: 80px;
 
-  margin-right: 40px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,5 +87,5 @@ export const LogoutButton = styled.button`
 `;
 
 export const HeaderContent = styled.div`
-  margin: 0px 10px;
+  margin: 0px 20px;
 `;

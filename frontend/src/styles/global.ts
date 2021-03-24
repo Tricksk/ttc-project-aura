@@ -28,6 +28,7 @@ export default createGlobalStyle`
     --primary-2: #43233A;
     --primary-3: #6B385D;
     --primary-4: #783F68;
+    --primary-5: #A64960;
 
     --secundary: #03A39C;
 
@@ -35,6 +36,9 @@ export default createGlobalStyle`
     --white-2: #F4EDE8;
 
     --gray: #666360;
+    --gray-2: #494846;
+    --gray-3: #707070;
+    --gray-4: #72716E;
 
     --error: #be2727;
   }

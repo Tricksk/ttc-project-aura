@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: calc(100vh - 140px);
-  min-width: 510px;
-  padding: 24px 0;
+  min-width: 490px;
+  padding: 30px 0;
 
   background-color: var(--primary);
 
@@ -11,7 +10,6 @@ export const Container = styled.div`
   flex-direction: column;
 
   float: left;
-
   z-index: 2;
 
   > a {
@@ -25,13 +23,15 @@ export const Container = styled.div`
 
     border-radius: 0 10px 10px 0;
 
-    &.active {
-      background-color: var(--primary-4);
-      width: calc(100% + 10px);
-    }
+    transition: width .2s ease-in;
 
     &:hover {
       background-color: var(--primary-3);
+    }
+
+    &.active {
+      background-color: var(--primary-4);
+      width: calc(100% + 10px);
     }
 
     & + a {
