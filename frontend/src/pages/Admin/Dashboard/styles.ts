@@ -78,3 +78,8 @@ export const DashboardHeader = styled.div`
     }
   }
 `;
+
+export const Calendar = styled.div`
+  width: 360px;
+  margin: 0 auto;
+`;

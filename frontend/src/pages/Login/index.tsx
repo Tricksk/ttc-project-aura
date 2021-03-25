@@ -40,7 +40,7 @@ const Login: React.FC = () => {
         password: data.password
       });
 
-      history.push('/me');
+      history.push('/admin');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);

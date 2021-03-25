@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 
 import { Container } from './styles';
-import Dashboard from '../Dashboard/index';
-import Clients from '../Clients';
+import Dashboard from './Dashboard';
+import Clients from './Clients';
 
 const Admin: React.FC = () => {
   return (
@@ -14,11 +14,14 @@ const Admin: React.FC = () => {
       <Container>
         <Sidebar />
 
-        <Route path="/admin/dashboard" component={Dashboard} />
-        <Route path="/admin/clientes" component={Clients} />
-        <Route path="/admin/fixas" component={Clients} />
-        <Route path="/admin/servicos" component={Clients} />
-        <Route path="/admin/usuarios" component={Clients} />
+        <Switch>
+          <Route path="/admin/dashboard" exact component={Dashboard} />
+          <Route path="/admin/clientes" exact component={Clients} />
+          <Route path="/admin/fixas" exact component={Clients} />
+          <Route path="/admin/servicos" exact component={Clients} />
+          <Route path="/admin/usuarios" exact component={Clients} />
+          <Redirect from='/admin' to='/admin/dashboard' />
+        </Switch>
       </Container>
     </>
   );

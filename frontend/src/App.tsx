@@ -5,7 +5,6 @@ import GlobalStyle from './styles/global';
 import AppProvider from './shared/hooks';
 import Routes from './routes';
 
-
 const App: React.FC = () => {
 
   return (
