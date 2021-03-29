@@ -41,5 +41,8 @@ export default createGlobalStyle`
     --gray-4: #72716E;
 
     --error: #be2727;
+
+    --header-height: 100px;
+    --sidebar-width: 400px;
   }
 `;

@@ -5,7 +5,7 @@ export const Container = styled.div`
   background-color: var(--primary);
 
   width: 100%;
-  height: 144px;
+  height: var(--header-height);
 
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
 
@@ -24,7 +24,7 @@ export const Container = styled.div`
 `;
 
 export const LogoContainer = styled.div`
-  width: 490px;
+  width: var(--sidebar-width);
   height: 100%;
 
   display: flex;

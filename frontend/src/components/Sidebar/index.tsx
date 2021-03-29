@@ -20,7 +20,7 @@ const Sidebar: React.FC = () => {
       {
         LINKS.map(link => (
           <Link className={pathname === link.to ? 'active' : ''} key={link.to} to={link.to} title={link.title}>
-            <link.component size={40} color="var(--white)" />
+            <link.component size={30} color="var(--white)" />
             <p>{link.title}</p>
           </Link>
         ))

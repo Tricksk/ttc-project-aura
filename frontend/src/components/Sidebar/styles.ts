@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-width: 490px;
+  min-width: var(--sidebar-width);
   padding: 30px 0;
 
   background-color: var(--primary);
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
     text-decoration: none;
 
-    height: 80px;
+    height: 70px;
     width: 100%;
 
     border-radius: 0 10px 10px 0;
@@ -40,7 +40,7 @@ export const Container = styled.div`
 
     p {
       color: var(--white);
-      font-size: 24px;
+      font-size: 20px;
     }
 
     svg {
