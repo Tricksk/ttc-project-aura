@@ -7,6 +7,7 @@ const SearchInput: React.FC = () => {
   return (
     <Container>
       <input placeholder="Pesquisar..." type="text" />
+
       <FiSearch size={20} color="var(--gray)" />
     </Container>
   );

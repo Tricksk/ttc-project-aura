@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import { Table } from '@material-ui/core';
+import { TableFooter } from '@material-ui/core';
 
-export const Pagination = styled.div`
-  position: relative;
-  right: 0;
+export const NoFinalBorder = styled(TableFooter)`
+  
+  .MuiTableCell-root {
+    border: 0;
+  }
 `;

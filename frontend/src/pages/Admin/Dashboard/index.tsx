@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import DayPicker, { DayModifiers, Modifier } from 'react-day-picker';
+import { useModal } from '../../../shared/hooks/modal';
 
 import 'react-day-picker/lib/style.css'
 import Button from '../../../components/Button';
-import { DatePicker } from './date-picker';
 
 import { FiCalendar } from 'react-icons/fi';
 import Appointment from './Appointment';
@@ -11,9 +11,9 @@ import NextAppointment from './NextAppointment';
 
 import {
   Container, Columns, Column, Title, InfoDate,
-  SubTitle, Wrapper, DashboardHeader, Calendar
+  SubTitle, Wrapper, DashboardHeader, Calendar, DatePicker
 } from './styles';
-import api from '../../../shared/services/api';
+import NewAppointment from './NewAppointment';
 
 const configDayPicker: Modifier[] = [
   { before: new Date() },
@@ -38,6 +38,8 @@ const dayPickerConfig = {
 }
 
 const Dashboard: React.FC = () => {
+  const { setModal } = useModal();
+
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [currentMonth, setCurrentMonth] = useState<number>(selectedDate.getMonth());
 
@@ -50,16 +52,23 @@ const Dashboard: React.FC = () => {
     setCurrentMonth(month.getMonth());
   }, []);
 
+  const handleOpenModal = useCallback(() => {
+    setModal({
+      title: 'Novo Agendamento',
+      content: <NewAppointment />
+    })
+  }, []);
+
   useEffect(() => {
     // api.get()
-  }, [currentMonth])
+  }, [])
 
   return (
     <Container>
       <DashboardHeader>
         <Title>Horários Agendados</Title>
         <InfoDate>Hoje | Dia 09 | Terça-feira</InfoDate>
-        <Button>
+        <Button onClick={handleOpenModal}>
           <FiCalendar size={20} color="var(--white)" />
           <p>Novo Agendamento</p>
         </Button>

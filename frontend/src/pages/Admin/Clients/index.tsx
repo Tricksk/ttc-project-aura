@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Container, ListTop } from './styles';
+import { Container, ListTop, NovoUsuarioBtn } from './styles';
 import Table from '../../../components/Table';
 import SearchInput from '../../../components/SearchInput';
+import { FiUserPlus } from 'react-icons/fi';
 
 const columns = [
   {
@@ -41,6 +42,11 @@ const Clients: React.FC = () => {
       <ListTop>
         <h1>Clientes</h1>
         <SearchInput />
+
+        <NovoUsuarioBtn>
+          <FiUserPlus color="var(--white)" size={24} />
+          Novo
+        </NovoUsuarioBtn>
       </ListTop>
       <Table columns={columns} rows={rows} onDelete={() => { }} onEdit={() => { }} />
     </Container>

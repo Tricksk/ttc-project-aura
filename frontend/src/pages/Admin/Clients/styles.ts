@@ -1,3 +1,4 @@
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -15,5 +16,28 @@ export const ListTop = styled.div`
   h1 {
     color: var(--gray);
     margin-right: 50px;
+  }
+`;
+
+export const NovoUsuarioBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  height: 44px;
+  width: 115px;
+  background-color: var(--secundary);
+  color: var(--white);
+  border: 0;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${shade(0.2, '#03A39C')}
+  }
+
+  svg {
+    margin-right: 10px;
   }
 `;

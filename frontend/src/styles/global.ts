@@ -35,10 +35,11 @@ export default createGlobalStyle`
     --white: #FFFFFF;
     --white-2: #F4EDE8;
 
-    --gray: #666360;
     --gray-2: #494846;
+    --gray: #666360;
     --gray-3: #707070;
     --gray-4: #72716E;
+    --gray-5: #BEBEBE;
 
     --error: #be2727;
 

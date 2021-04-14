@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Typography } from '@material-ui/core';
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
+import { NoFinalBorder } from './styles';
 
 interface TableProps {
   columns: any[],
@@ -18,7 +19,7 @@ const APTable: React.FC<TableProps> = (props) => {
   const { columns, rows, onEdit, onDelete } = props;
 
   return (
-    <TableContainer component={Paper} elevation={0} style={{ background: '#49484605', padding: '0px 16px' }}>
+    <TableContainer component={Paper} elevation={1} style={{ background: '#49484605', padding: '0px 16px' }}>
       <Table>
         <TableHead>
           <TableRow>
@@ -55,16 +56,20 @@ const APTable: React.FC<TableProps> = (props) => {
             ))
           }
         </TableBody>
-        <TablePagination
-          count={10}
-          page={0}
-          rowsPerPage={10}
-          rowsPerPageOptions={[]}
-          variant="footer"
-          onChangePage={() => { }}
-        />
+        <NoFinalBorder>
+          <TableRow>
+            <TablePagination
+              count={10}
+              page={0}
+              rowsPerPage={10}
+              labelDisplayedRows={(pag) => <span>{pag.from}-{pag.to} de {pag.count}</span>}
+              rowsPerPageOptions={[]}
+              variant="footer"
+              onChangePage={() => { }}
+            />
+          </TableRow>
+        </NoFinalBorder>
       </Table>
-
     </TableContainer>
   )
 }
