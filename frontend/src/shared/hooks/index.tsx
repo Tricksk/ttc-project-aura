@@ -1,17 +1,13 @@
-import React from 'react';
-import { ToastProvider } from './toast';
-import { AuthProvider } from './auth';
-import { ModalProvider } from './modal';
-
+import React from "react";
+import { ToastProvider } from "./toast";
+import { AuthProvider } from "./auth";
 
 const AppProvider: React.FC = ({ children }) => {
   return (
     <AuthProvider>
-      <ModalProvider>
-        <ToastProvider>{children}</ToastProvider>
-      </ModalProvider>
+      <ToastProvider>{children}</ToastProvider>
     </AuthProvider>
   );
-}
+};
 
 export default AppProvider;

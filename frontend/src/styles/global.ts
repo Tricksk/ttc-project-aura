@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   * {
@@ -46,4 +46,26 @@ export default createGlobalStyle`
     --header-height: 100px;
     --sidebar-width: 400px;
   }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 5px 0px;
+`;
+
+export const Col = styled.div<{ xs?: number }>`
+  display: flex;
+  flex-direction: column;
+  flex: ${(props) => (props.xs ? props.xs : 1)};
+
+  margin: 0px 5px;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;

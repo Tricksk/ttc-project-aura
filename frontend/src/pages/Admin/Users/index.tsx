@@ -5,8 +5,7 @@ import Table from "../../../components/Table";
 import SearchInput from "../../../components/SearchInput";
 import { FiUserPlus } from "react-icons/fi";
 import Api from "../../../shared/services/api";
-import Client from "../../../models/Client";
-import { format } from "date-fns";
+import User from "../../../models/User";
 
 const columns = [
   {
@@ -14,47 +13,32 @@ const columns = [
     headerName: "Nome",
   },
   {
-    field: "cellphone",
-    headerName: "Telefone",
-  },
-  {
-    field: "sexText",
-    headerName: "Sexo",
-  },
-  {
-    field: "formatBirthday",
-    headerName: "Date de Nascimento",
-  },
-  {
-    field: "lastService",
-    headerName: "Último Serviço",
+    field: "login",
+    headerName: "Usuário",
   },
 ];
 
-const Clients: React.FC = () => {
-  const [rows, setRows] = useState<Client[]>([]);
+const Users: React.FC = () => {
+  const [rows, setRows] = useState<User[]>([]);
 
-  const getClients = useCallback(async () => {
-    const { data } = await Api.get<Client[]>("clients");
+  const getUsers = useCallback(async () => {
+    const { data } = await Api.get<User[]>("users");
 
     setRows(
       data.map((x) => ({
         ...x,
-        formatBirthday: format(new Date(x.birthday), "dd/MM/yyyy"),
-        sexText: x.sex === "M" ? "Masculino" : "Feminino",
-        lastService: x.lastService || '-'
       }))
     );
   }, []);
 
   useEffect(() => {
-    getClients();
-  }, [getClients]);
+    getUsers();
+  }, [getUsers]);
 
   return (
     <Container>
       <ListTop>
-        <h1>Clientes</h1>
+        <h1>Usuários</h1>
         <SearchInput />
 
         <NovoUsuarioBtn>
@@ -72,4 +56,4 @@ const Clients: React.FC = () => {
   );
 };
 
-export default Clients;
+export default Users;
