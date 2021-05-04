@@ -2,16 +2,17 @@ import { Router } from 'express';
 import { ServicesService } from '../services/services.service';
 import { getCustomRepository } from 'typeorm';
 import { container } from 'tsyringe';
+import { ServicesRepository } from '../repositories/ServicesRepository';
 
 const routes = Router();
 
-// routes.get('/', async (request, response) => {
-//   const servicesRepository = getCustomRepository(ServicesRepository);
+routes.get('/', async (request, response) => {
+  const servicesRepository = getCustomRepository(ServicesRepository);
 
-//   const services = await servicesRepository.find();
+  const services = await servicesRepository.list();
 
-//   return response.json(services);
-// });
+  return response.json(services);
+});
 
 routes.post('/', async (request, response) => {
   const {

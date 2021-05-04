@@ -13,6 +13,10 @@ export class UsersRepository implements IUsersRepository {
     this.ormRepositorio = getRepository(User);
   }
 
+  public async list(): Promise<User[]> {
+    return this.ormRepositorio.find();
+  }
+
   public async findByLogin(login: string): Promise<User | undefined> {
     return this.ormRepositorio.findOne({
       where: { login }

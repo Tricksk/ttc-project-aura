@@ -2,8 +2,17 @@ import { Router } from 'express';
 import { startOfDay, parseISO } from 'date-fns';
 import { ClientsService } from '../services/clients.service';
 import { container } from 'tsyringe';
+import { ClientsRepository } from '../repositories/ClientsRepository';
 
 const routes = Router();
+
+routes.get('/', async (request, response) => {
+  const clientsRepository = container.resolve(ClientsRepository);
+
+  const client = await clientsRepository.list();
+
+  response.json(client);
+})
 
 routes.post('/', async (request, response) => {
   const {

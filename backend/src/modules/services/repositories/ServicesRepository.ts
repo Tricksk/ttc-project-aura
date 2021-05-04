@@ -2,6 +2,7 @@ import { EntityRepository, Repository, getRepository } from 'typeorm';
 import ICreateServiceDTO from '../dtos/ICreateServiceDTO';
 import Service from "../models/Service";
 
+@EntityRepository(Service)
 export class ServicesRepository {
 
   private ormRepository: Repository<Service>;
@@ -16,5 +17,9 @@ export class ServicesRepository {
 
   public async save(service: Service): Promise<Service> {
     return this.ormRepository.save(service);
+  }
+
+  public async list(): Promise<Service[]> {
+    return this.ormRepository.find();
   }
 }

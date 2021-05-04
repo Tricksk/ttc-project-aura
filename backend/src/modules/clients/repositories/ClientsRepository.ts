@@ -19,4 +19,8 @@ export class ClientsRepository implements IClientsRepository {
   public async save(client: Client): Promise<Client> {
     return this.ormRepository.save(client);
   }
+
+  public async list(): Promise<Client[]> {
+    return this.ormRepository.find();
+  }
 }

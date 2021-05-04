@@ -12,12 +12,12 @@ import authenticateMiddleware from '../shared/middlewares/authenticate.middlewar
 
 const routes = Router();
 
-routes.use('/clients', authenticateMiddleware, clientsRouter);
-routes.use('/appointments', authenticateMiddleware, appointmentsRouter);
-routes.use('/records', authenticateMiddleware, recordsRouter);
-routes.use('/fields', authenticateMiddleware, fieldsRouter);
-routes.use('/services', authenticateMiddleware, servicesRouter);
-routes.use('/users', authenticateMiddleware, usersRouter);
+routes.use('/clients', /* authenticateMiddleware, */  clientsRouter);
+routes.use('/appointments', /* authenticateMiddleware, */  appointmentsRouter);
+routes.use('/records', /* authenticateMiddleware, */  recordsRouter);
+routes.use('/fields', /* authenticateMiddleware, */  fieldsRouter);
+routes.use('/services', /* authenticateMiddleware, */  servicesRouter);
+routes.use('/users', /* authenticateMiddleware, */  usersRouter);
 
 routes.use('/sessions', sessionsRouter);
 
